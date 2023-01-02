@@ -3,8 +3,6 @@ function ValidatorCPF (cpfSended){
         enumerable: true,
         get: function(){
             return cpfSended.replace(/\D+/g, '');
-
-            // This get is used for extract only the CPF numbers.
         }
     });
 }
@@ -13,8 +11,6 @@ ValidatorCPF.prototype.validates = function(){
     if (typeof this.cleancpf === 'undefined') return false;
     if (this.cleancpf.length !== 11) return false;
     if (this.sequency()) return false;
-
-    // That conditional loop is used to know if 
 
     const cpfInitial = this.cleancpf.slice(0, -2);
     const digitOne = this.charCount(cpfInitial);
